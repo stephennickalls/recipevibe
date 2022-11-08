@@ -26,7 +26,7 @@ class IngredientGroup(models.Model):
 
 class Ingredient(models.Model):
     ingredient = models.CharField(max_length=255)
-    ingredient_group = models.ForeignKey(IngredientGroup, on_delete=models.PROTECT)
+    ingredient_group = models.ForeignKey(IngredientGroup, default=1, on_delete=models.PROTECT)
 
 class RecipeIngredient(models.Model):
 

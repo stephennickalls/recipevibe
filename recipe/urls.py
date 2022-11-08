@@ -9,6 +9,7 @@ router.register('diettypes', views.DietTypeViewSet, basename='diettypes')
 
 recipes_router = routers.NestedDefaultRouter(router, 'recipes', lookup='recipe')
 recipes_router.register('instructions', views.InstructionViewSet, basename='recipe-instructions')
+recipes_router.register('ingredients', views.IngredientViewSet, basename='recipe-ingredients')
 
 
 urlpatterns = router.urls + recipes_router.urls

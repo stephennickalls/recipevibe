@@ -10,8 +10,8 @@ from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework import status
 # from .filters import ProductFilter
-from .models import CuisineType, Recipe, DietType, Instruction
-from .serializers import RecipeSerializer, DietTypeSerializer, CuisineTypeSerializer, IntructionSerializer
+from .models import CuisineType, Recipe, DietType, Instruction, Ingredient
+from .serializers import RecipeSerializer, DietTypeSerializer, CuisineTypeSerializer, InstructionSerializer, IngredientSerializer
 
 import pprint
 
@@ -76,11 +76,11 @@ class CuisineTypeViewSet(ModelViewSet):
 
 class InstructionViewSet(ModelViewSet):
     queryset = Instruction.objects.all()
-    serializer_class = IntructionSerializer
+    serializer_class = InstructionSerializer
 
     # filters Instruction to show only those for the current recipe
     def get_queryset(self):
-        return Instruction.objects.filter(recipe_id=self.kwargs['recipe_pk'])
+        return Instruction.objects.filter(recipe_id=self.kwargs['recipe_pk']).order_by('step_num')
 
 
     def get_serializer_context(self):
@@ -88,3 +88,9 @@ class InstructionViewSet(ModelViewSet):
 
 
 
+class IngredientViewSet(ModelViewSet):
+    queryset = Ingredient.objects.all()
+    serializer_class = IngredientSerializer
+
+    def get_serializer_context(self):
+        return {'request': self.request}
