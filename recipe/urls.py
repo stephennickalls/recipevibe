@@ -6,6 +6,7 @@ from . import views
 router = routers.DefaultRouter()
 router.register('recipes', views.RecipeViewSet, basename='recipes')
 router.register('diettypes', views.DietTypeViewSet, basename='diettypes')
+router.register('cuisinetypes', views.CuisineTypeViewSet, basename='cuisinetypes')
 
 recipes_router = routers.NestedDefaultRouter(router, 'recipes', lookup='recipe')
 recipes_router.register('instructions', views.InstructionViewSet, basename='recipe-instructions')

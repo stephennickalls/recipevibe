@@ -7,13 +7,7 @@ class RecipeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Recipe
         #depth = 1 # gets related fields. I guess depth 2 and on would return deeper nested items
-        fields = ['id', 'active', 'title', 'diet', 'cuisine_type' ]
-        
-       
-    # def create(self, validated_data):
-    #     return Recipe.objects.create( **validated_data)
-        
-
+        fields = ['id', 'active', 'title', 'diet', 'cuisine_type' ]        
 
 class IngredientSerializer(serializers.ModelSerializer):
     class Meta:
@@ -38,4 +32,4 @@ class DietTypeSerializer(serializers.ModelSerializer):
 class CuisineTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = CuisineType
-        fields = ['id', 'diet_type']
+        fields = ['id', 'cuisine_type']

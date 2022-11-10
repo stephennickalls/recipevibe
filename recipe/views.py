@@ -23,9 +23,7 @@ import pprint
 class RecipeViewSet(ModelViewSet):
     # queryset = Recipe.objects.select_related('diet').all()
     queryset = Recipe.objects.all()
-    serializer_class = RecipeSerializer
-
-    
+    serializer_class = RecipeSerializer   
 
     def get_serializer_context(self):
         return {'request': self.request}
